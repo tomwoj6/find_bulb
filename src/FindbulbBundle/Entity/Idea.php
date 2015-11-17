@@ -63,6 +63,7 @@ class Idea
     private $votes;
 
 
+
     /**
      * Get id
      *
@@ -94,6 +95,29 @@ class Idea
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Idea
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -220,27 +244,23 @@ class Idea
     {
         return $this->votes;
     }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Idea
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
+    
+    public function getSumVotes(){
+        $upVotes = 0;
+        $downVotes = 0;
+        foreach ($this->votes as $v){
+            if($v->getUp() === 1){
+                $upVotes++;
+            }else{
+                $downVotes++;
+            }
+        }
+        $response = array(
+            'up' => $upVotes,
+            'down' => $downVotes
+        );
+        return (object)$response;
     }
+    
 
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
 }
