@@ -13,14 +13,11 @@
             <div class="col-md-1"> OBRAZ </div>
             <div class="col-md-10">
                 <div class="row-title"><h4>{{ idea.title }}</h4></div>
-                <div class="row-desc">{{ idea.description }}
-                
-                
-                {{ dump(idea.votes) }}
-                </div>
+                <div class="row-desc">{{ idea.description }}</div>
             </div>
             <div class="col-md-1">
-                Ocena +/-
+                <span class="glyphicon glyphicon-arrow-up"></span>{{idea.sumvotes.up}}
+                <span class="glyphicon glyphicon-arrow-down"></span>{{idea.sumvotes.down}}
             </div>
         </div>
     {% endfor %}
