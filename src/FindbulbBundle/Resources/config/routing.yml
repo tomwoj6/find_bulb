@@ -1,0 +1,16 @@
+findbulb_homepage:
+    path:     /home
+    defaults: { _controller: FindbulbBundle:Findbulb:index }
+
+#paczka idea - jej routing
+fosfindbulb_idea:
+    resource: "@FindbulbBundle/Resources/config/routing-idea.yml"
+    prefix: /idea
+    
+#paczka commision - jej routing
+fosfindbulb_commision:
+    resource: "@FindbulbBundle/Resources/config/routing-commision.yml"
+    prefix: /commision
+
+
+    

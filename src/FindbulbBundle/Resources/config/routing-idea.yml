@@ -1,0 +1,3 @@
+findbulb_new_idea:
+    path:   /new
+    defaults: { _controller: FindbulbBundle:Idea:new }

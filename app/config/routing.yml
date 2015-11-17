@@ -1,0 +1,17 @@
+findbulb:
+    resource: "@FindbulbBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#paczka z userami i jej routing
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    
+#podmiana sciezek na nasze
+
+fos_user_security_login:
+    path:      /
+    defaults:  { _controller: FOSUserBundle:Security:login, _method: POST }
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,39 @@
+{% extends "FindbulbBundle:Home:base.html.twig" %}
+
+{#sam content#}
+
+{% block content %}
+    strona gówna    <br /> 
+    zalogowany jako: {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}">(logout)</a><br />
+
+    <a class="btn btn-default" href="{{ path('findbulb_new_idea') }}">Dodaj Pomysł</a>
+
+    {% for idea in ideas %}
+        <div class="row ">
+            <div class="col-md-1"> OBRAZ </div>
+            <div class="col-md-10">
+                <div class="row-title"><h4>{{ idea.title }}</h4></div>
+                <div class="row-desc">{{ idea.description }}
+                
+                
+                {{ dump(idea.votes) }}
+                </div>
+            </div>
+            <div class="col-md-1">
+                Ocena +/-
+            </div>
+        </div>
+    {% endfor %}
+    
+    
+    
+{% endblock content %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets 
+            'css/main-index.css' 
+         filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock stylesheets %}

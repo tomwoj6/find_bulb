@@ -1,0 +1,16 @@
+body{
+    background-color: #cccccc;
+}
+.container{
+    background-color: #ffffff;
+    padding: 20px;
+}
+.header{
+    height: 50px;
+}
+.alert{
+    box-shadow: none;
+    background-image: none;
+    background-repeat: repeat;
+    border-radius: 0;
+}

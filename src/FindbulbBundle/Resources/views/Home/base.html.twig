@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        {% block stylesheets %}
+            {% stylesheets 
+                'css/bootstrap-theme.min.css' 
+                'css/bootstrap.min.css' 
+                'css/main.css' 
+             filter='cssrewrite' %}
+
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock stylesheets %}
+    </head>
+    <body>
+        <div class="header">
+        </div>
+        <div class="container">
+{#            wiadomosci flash#}
+            {% include 'FindbulbBundle:Flash:default.html.twig' %}
+            
+            {% block content %}
+            {% endblock content %}
+        </div>
+    {% block javascripts %}
+        {% javascripts 
+            'js/bootstrap.min.js' 
+            'js/jquery-1.11.3.min.js' 
+        %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock javascripts %}
+    </body>
+</html>

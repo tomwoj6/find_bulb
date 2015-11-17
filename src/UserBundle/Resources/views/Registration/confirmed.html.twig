@@ -1,0 +1,21 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{#sam content#}
+
+{% block fos_user_content %}
+    <div class="header">
+    
+    </div>
+    <div class="container">
+        <div class="alert alert-success">
+            {{ 'registration.confirmed'|trans({'%username%': user.username}) }}
+            <br/>
+            <a href="{{ path('fos_user_security_login') }}">Login</a>
+        
+        </div>
+        {% if targetUrl %}
+            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+        {% endif %}
+    </div>
+{% endblock fos_user_content%}
