@@ -10,8 +10,10 @@
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Home/index.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/Idea.php</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Form/Type/IdeaFormType.php</file>
+            <file>file:/C:/wamp/www/find_bulb/.gitignore</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Repository/IdeaRepository.php</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/config/routing-commision.yml</file>
+            <file>file:/C:/wamp/www/find_bulb/.git/config</file>
             <file>file:/C:/wamp/www/find_bulb/app/config/config.yml</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Idea/newIdea.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/Type.php</file>
