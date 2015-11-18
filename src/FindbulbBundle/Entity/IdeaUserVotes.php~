@@ -4,10 +4,15 @@ namespace FindbulbBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FindbulbBundle\Repository\IdeaUserVotesRepository")
  * @ORM\Table(name="idea_user_votes")
  */
 class IdeaUserVotes{
+
+    function __construct() {
+        $this->up = 0;
+        $this->down = 0;
+    }
 
     /**
      * @ORM\Id
