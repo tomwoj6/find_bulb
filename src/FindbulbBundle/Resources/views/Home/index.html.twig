@@ -12,17 +12,26 @@
         <div class="row ">
             <div class="col-md-1"> OBRAZ </div>
             <div class="col-md-10">
-                <div class="row-title"><h4>{{ idea.title }}</h4></div>
-                <div class="row-desc">{{ idea.description }}</div>
+                <div class="row-title">
+                    <h4>
+                        <a href="{{ path('findbulb_view_idea', { 'ideaId': idea.id }) }}">
+                            {{ idea.title }}
+                        </a>
+                    </h4>
+                </div>
+                <div class="row-desc">{{ idea.description }}
+                <br/>
+                Dodane przez: {{idea.userAdd.username}}
+                
+                </div>
             </div>
             <div class="col-md-1">
-                <span class="glyphicon glyphicon-arrow-up"></span>{{idea.sumvotes.up}}
-                <span class="glyphicon glyphicon-arrow-down"></span>{{idea.sumvotes.down}}
+                <a class="glyphicon glyphicon-arrow-up" href="{{ path('findbulb_upvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.up}}
+                <a class="glyphicon glyphicon-arrow-down" href="{{ path('findbulb_downvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.down}}
             </div>
         </div>
     {% endfor %}
-    
-    
+
     
 {% endblock content %}
 

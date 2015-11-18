@@ -1,0 +1,54 @@
+{% extends "FindbulbBundle:Home:base.html.twig" %}
+
+{#sam content#}
+
+{% block content %}
+    <h1>{{ idea.title }}</h1><br/>
+    {{ idea.description }}
+    
+    <br/>
+    <br/>
+    Author: <a href="{{ path('findbulb_view_profile', { 'userId': idea.userAdd.id }) }}">{{ idea.userAdd.username }}</a><br />
+    Date: {{ idea.dateAdd|date('Y-m-d H:i:s') }}<br />
+    Category: {{ idea.category.name }}<br />
+    Type: {{ idea.type.name }}
+    <br/>
+    <br/>
+    <br/>
+    
+    <hr>
+    Comments:<br />
+
+    
+    {% for comment in comments %}
+        
+        <div class="comment-level-1">
+            <div>{{ comment.userAdd.username }} at {{ comment.dateAdd|date('Y-m-d H:i:s') }}</div>
+            <div>{{ comment.text }}</div>
+            
+            
+
+            
+            {% for child in comment.children %}
+                <div class="comment-level-2">
+                    <div>{{ child.userAdd.username }} at {{ child.dateAdd|date('Y-m-d H:i:s') }}</div>
+                    <div>{{ child.text }}</div>
+                </div>
+            {% endfor %}
+            
+            
+            
+        </div>
+    {% endfor %}
+    
+    
+{% endblock content %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets 
+            'css/idea-view.css' 
+         filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock stylesheets %}
