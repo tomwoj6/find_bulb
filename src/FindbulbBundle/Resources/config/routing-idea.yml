@@ -1,3 +1,15 @@
 findbulb_new_idea:
     path:   /new
     defaults: { _controller: FindbulbBundle:Idea:new }
+    
+findbulb_upvote_idea:
+    path: /up-vote/{ideaId}
+    defaults: { _controller: FindbulbBundle:Idea:upVote }
+    
+findbulb_downvote_idea:
+    path: /down-vote/{ideaId}
+    defaults: { _controller: FindbulbBundle:Idea:downVote }
+    
+findbulb_view_idea:
+    path: /view/{ideaId}
+    defaults: { _controller: FindbulbBundle:Idea:view }

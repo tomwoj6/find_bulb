@@ -7,10 +7,11 @@ fosfindbulb_idea:
     resource: "@FindbulbBundle/Resources/config/routing-idea.yml"
     prefix: /idea
     
-#paczka commision - jej routing
-fosfindbulb_commision:
-    resource: "@FindbulbBundle/Resources/config/routing-commision.yml"
-    prefix: /commision
+#user
+fosfindbulb_user:
+    resource: "@FindbulbBundle/Resources/config/routing-user.yml"
+    prefix: /user
+
 
 
     
