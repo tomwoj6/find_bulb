@@ -2,3 +2,7 @@ services:
     findbulb.vote.helper:
         class: FindbulbBundle\Helper\IdeaVoteHelper
         arguments: [@security.token_storage, @doctrine]
+        
+    findbulb.comment.helper:
+        class: FindbulbBundle\Helper\IdeaCommentHelper
+        arguments: [@security.token_storage, @doctrine]

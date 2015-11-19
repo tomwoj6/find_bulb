@@ -24,7 +24,7 @@ class Comments
     protected $userAdd;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Idea")
+     * @ORM\ManyToOne(targetEntity="Idea", inversedBy="comments")
      * @ORM\JoinColumn(name="idea", referencedColumnName="id")
      **/
     protected $idea;

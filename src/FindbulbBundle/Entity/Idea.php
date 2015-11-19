@@ -12,6 +12,7 @@ class Idea
 {
     public function __construct() {
         $this->votes = new ArrayCollection();
+        $this->comments = new ArrayCollection();
         $this->dateAdd = new \DateTime('now');
     }
     
@@ -61,6 +62,11 @@ class Idea
      * @ORM\OneToMany(targetEntity="IdeaUserVotes", mappedBy="idea")
      */
     private $votes;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comments", mappedBy="idea")
+     */
+    private $comments;
 
 
 
@@ -261,6 +267,40 @@ class Idea
         );
         return (object)$response;
     }
-    
 
+    /**
+     * Add comments
+     *
+     * @param \FindbulbBundle\Entity\Comments $comments
+     * @return Idea
+     */
+    public function addComment(\FindbulbBundle\Entity\Comments $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \FindbulbBundle\Entity\Comments $comments
+     */
+    public function removeComment(\FindbulbBundle\Entity\Comments $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+    
+    
+    
 }

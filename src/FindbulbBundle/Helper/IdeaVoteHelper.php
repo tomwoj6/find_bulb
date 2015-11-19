@@ -42,7 +42,7 @@ class IdeaVoteHelper{
                 return true;
             }
         }else{
-            throw new NotFoundHttpException('Bad Idea Id (ID = '.$ideaId.')');
+            throw new NotFoundHttpException('Bad Idea(ID = '.$ideaId.')');
         }
         return false;
     }

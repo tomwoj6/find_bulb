@@ -61,6 +61,11 @@ class Idea
      * @ORM\OneToMany(targetEntity="IdeaUserVotes", mappedBy="idea")
      */
     private $votes;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comments", mappedBy="idea")
+     */
+    private $comments;
 
 
 

@@ -13,3 +13,9 @@ findbulb_downvote_idea:
 findbulb_view_idea:
     path: /view/{ideaId}
     defaults: { _controller: FindbulbBundle:Idea:view }
+
+findbulb_add_comment:
+    path: /add-comment
+    defaults: { _controller: FindbulbBundle:Idea:addComment }
+    
+    

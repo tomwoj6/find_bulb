@@ -18,29 +18,33 @@
     
     <hr>
     Comments:<br />
-
-    
     {% for comment in comments %}
-        
         <div class="comment-level-1">
-            <div>{{ comment.userAdd.username }} at {{ comment.dateAdd|date('Y-m-d H:i:s') }}</div>
+            <span>{{ comment.userAdd.username }} at {{ comment.dateAdd|date('Y-m-d H:i:s') }}</span>
+            <a class="comment-response" data-comment="{{ comment.id }}" data-author="{{ comment.userAdd.username }}">reply</a>
             <div>{{ comment.text }}</div>
-            
-            
-
             
             {% for child in comment.children %}
                 <div class="comment-level-2">
-                    <div>{{ child.userAdd.username }} at {{ child.dateAdd|date('Y-m-d H:i:s') }}</div>
+                    <span>{{ child.userAdd.username }} at {{ child.dateAdd|date('Y-m-d H:i:s') }}</span>
+                    <a class="comment-response" data-comment="{{ comment.id }}" data-author="{{ child.userAdd.username }}">reply</a>
                     <div>{{ child.text }}</div>
                 </div>
             {% endfor %}
             
-            
-            
         </div>
     {% endfor %}
-    
+
+    <hr/>
+    <div class="comment-add">
+        Add comment:
+        {{ form_start(commentsForm) }}
+        {{ form_widget(commentsForm.text) }}
+        {{ form_widget(commentsForm.idea, {'value' : idea.id}) }}
+        {{ form_widget(commentsForm.submit) }}
+        
+        {{ form_end(commentsForm) }}
+    </div>
     
 {% endblock content %}
 
@@ -52,3 +56,19 @@
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        
+    $(".comment-response").click(function(){
+        {#tekst wyswietlany w textarea#}
+        textInput = '@'+$(this).data('author')+': ';
+        $("#comment_text").val(textInput);
+        $("#comment_text").focus();
+        {#przypisanie na ktory komentarz odpowiadamy#}
+        $("#comment_parent").val($(this).data('comment'));
+    });  
+    </script>
+    
+{% endblock javascripts %}
