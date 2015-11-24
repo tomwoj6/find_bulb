@@ -6,10 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 //encje
 use FindbulbBundle\Entity\Idea;
-use FindbulbBundle\Entity\Comments;
+use FindbulbBundle\Entity\IdeaHistory;
 //formy
 use FindbulbBundle\Form\Type\IdeaFormType;
 use FindbulbBundle\Form\Type\CommentFormType;
+
+
 
 class IdeaController extends Controller{    
     
@@ -42,6 +44,7 @@ class IdeaController extends Controller{
         if(!$idea){ throw $this->createNotFoundException('Bad Idea Id (ID = '.$ideaId.')');}
         //i oddzielnie jego komentarze
         $comments = $em->getRepository('FindbulbBundle:Comments')->getIdeaComments($idea->getId());
+        $history = $em->getRepository('FindbulbBundle:IdeaHistory')->findByIdea($idea);
         //form dodawania komentarza
         $commentFormType = new CommentFormType();
         $commentForm = $this->createForm($commentFormType, null, array(
@@ -51,6 +54,7 @@ class IdeaController extends Controller{
         return $this->render('FindbulbBundle:Idea:viewIdea.html.twig', array(
             'idea' => $idea,
             'comments' => $comments,
+            'history' => $history,
             'commentsForm' => $commentForm->createView()
         ));
     }
@@ -64,6 +68,37 @@ class IdeaController extends Controller{
         $this->get('session')->getFlashBag()->set('success', 'Zagłosowano na -');
         return $this->redirectToRoute('findbulb_homepage');
     }
+    
+    public function editAction(Request $request, $ideaId){
+        $em = $this->getDoctrine()->getManager();
+        
+        
+        $ideaFormType = new IdeaFormType();
+        $idea = $em->getRepository('FindbulbBundle:Idea')->find($ideaId);
+        $ideaForm = $this->createForm($ideaFormType, $idea);
+        
+        $ideaForm->handleRequest($request);
+        if($ideaForm->isValid()){
+          $ideaData = $ideaForm->getData();
+          $ideaHistory = new IdeaHistory();
+          $ideaHistory->setIdea($ideaData);
+          $ideaHistory->setUser($this->getUser());
+          $ideaHistory->setAction('Edycja pomysłu.');
+          
+          $em->persist($ideaData);
+          $em->persist($ideaHistory);
+          
+          $em->flush();
+          $this->get('session')->getFlashBag()->set('success', 'Edycja ok.');
+          return $this->redirectToRoute('findbulb_homepage');
+        }
+        
+        
+        return $this->render('FindbulbBundle:Idea:editIdea.html.twig', array(
+            'idea' => $ideaForm->createView()
+        ));
+    }
+    
     
     public function addCommentAction(Request $request){
         $ideaId = $this->get('findbulb.comment.helper')->addComment($request);

@@ -14,6 +14,7 @@ class Idea
         $this->votes = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->dateAdd = new \DateTime('now');
+        $this->active = true;
     }
     
     /**
@@ -50,6 +51,11 @@ class Idea
      * @ORM\Column(name="description", type="string", length=160)
      */
     protected $description;
+    
+    /**
+     * @ORM\Column(name="active", type="boolean")
+     */
+    protected $active;
     
     
     /**
@@ -303,4 +309,27 @@ class Idea
     
     
     
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Idea
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
 }

@@ -12,7 +12,9 @@ class Idea
 {
     public function __construct() {
         $this->votes = new ArrayCollection();
+        $this->comments = new ArrayCollection();
         $this->dateAdd = new \DateTime('now');
+        $this->active = true;
     }
     
     /**
@@ -49,6 +51,11 @@ class Idea
      * @ORM\Column(name="description", type="string", length=160)
      */
     protected $description;
+    
+    /**
+     * @ORM\Column(name="active", type="boolean")
+     */
+    protected $active;
     
     
     /**
@@ -266,6 +273,63 @@ class Idea
         );
         return (object)$response;
     }
+
+    /**
+     * Add comments
+     *
+     * @param \FindbulbBundle\Entity\Comments $comments
+     * @return Idea
+     */
+    public function addComment(\FindbulbBundle\Entity\Comments $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \FindbulbBundle\Entity\Comments $comments
+     */
+    public function removeComment(\FindbulbBundle\Entity\Comments $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+    
+    
     
 
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Idea
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
 }

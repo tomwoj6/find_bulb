@@ -10,7 +10,7 @@
 
     {% for idea in ideas %}
         <div class="row ">
-            <div class="col-md-1"> OBRAZ </div>
+            <div class="col-md-1"> <span class="fa fa-{{ idea.category.icon }}"></span> </div>
             <div class="col-md-10">
                 <div class="row-title">
                     <h4>
@@ -24,7 +24,6 @@
                 Dodane przez: {{idea.userAdd.username}} 
                 <br/>
                 Komentarzy({{ idea.comments|length }})
-                
                 </div>
             </div>
             <div class="col-md-1">

@@ -11,8 +11,21 @@
     Author: <a href="{{ path('findbulb_view_profile', { 'userId': idea.userAdd.id }) }}">{{ idea.userAdd.username }}</a><br />
     Date: {{ idea.dateAdd|date('Y-m-d H:i:s') }}<br />
     Category: {{ idea.category.name }}<br />
-    Type: {{ idea.type.name }}
-    <br/>
+    Type: {{ idea.type.name }}<br/>
+    
+    
+    <a href="{{ path('findbulb_edit_idea', { 'ideaId': idea.id }) }}">Edit Idea</a> <br/>
+    
+    History:<br />
+    
+    
+    {% for h in history %}
+        
+        {{ h.user.username }} - {{ h.action }} - {{ h.dateAdd|date('Y-m-d H:i:s') }}<br />
+        
+    {% endfor %}
+    
+    
     <br/>
     <br/>
     

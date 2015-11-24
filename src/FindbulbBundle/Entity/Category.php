@@ -21,6 +21,11 @@ class Category
      * @ORM\Column(name="name", type="string", length=160)
      */
     private $name;
+    
+    /**
+     * @ORM\Column(name="icon", type="string", length=160)
+     */
+    private $icon;
 
  
 
@@ -55,5 +60,28 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set icon
+     *
+     * @param string $icon
+     * @return Category
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * Get icon
+     *
+     * @return string 
+     */
+    public function getIcon()
+    {
+        return $this->icon;
     }
 }

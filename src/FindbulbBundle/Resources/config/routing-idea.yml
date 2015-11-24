@@ -18,4 +18,6 @@ findbulb_add_comment:
     path: /add-comment
     defaults: { _controller: FindbulbBundle:Idea:addComment }
     
-    
+findbulb_edit_idea:
+    path: /edit/{ideaId}
+    defaults: { _controller: FindbulbBundle:Idea:edit }
