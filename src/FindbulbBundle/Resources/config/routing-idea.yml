@@ -21,3 +21,7 @@ findbulb_add_comment:
 findbulb_edit_idea:
     path: /edit/{ideaId}
     defaults: { _controller: FindbulbBundle:Idea:edit }
+    
+findbulb_close_idea:
+    path: /close/{ideaId}
+    defaults: { _controller: FindbulbBundle:Idea:close }
