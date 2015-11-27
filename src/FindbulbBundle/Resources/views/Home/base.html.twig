@@ -62,6 +62,9 @@
             </header>
             
              <div class="container">
+{#            wiadomosci flash -> tutaj pobieramy szablon flash msg z finbulb/resources/flash/default#}
+            {% include 'FindbulbBundle:Flash:default.html.twig' %}
+            
              {% if app.request.hasPreviousSession %}
              {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
@@ -76,9 +79,6 @@
             {% endblock fos_user_content %}
               </div>
 
-{#            wiadomosci flash#}
-            {% include 'FindbulbBundle:Flash:default.html.twig' %}
-            
             {% block content %}
             {% endblock content %}
             </div>
