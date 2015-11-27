@@ -31,12 +31,12 @@
         {{idea.sumvotes.up}}/{{idea.sumvotes.down}} 
     {% endif %}
     <br />
-    History:<br />
-
-    {% for h in history %}
-        {{ h.user.username }} - {{ h.action }} - {{ h.dateAdd|date('Y-m-d H:i:s') }}<br />
-    {% endfor %}
-
+    {% if idea.userAdd == app.user %}
+        History:<br />
+        {% for h in history %}
+            {{ h.user.username }} - {{ h.action }} - {{ h.dateAdd|date('Y-m-d H:i:s') }}<br />
+        {% endfor %}
+    {% endif %}
 
     <br/>
     <br/>
