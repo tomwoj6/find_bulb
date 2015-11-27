@@ -1,6 +1,10 @@
 body{
     background-color: #fff;
 }
+.main {
+max-width:1270px;
+width:100%;
+}
 .container{
     background-color: #ffffff;
     padding: 20px;
