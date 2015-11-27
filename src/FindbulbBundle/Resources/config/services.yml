@@ -6,3 +6,7 @@ services:
     findbulb.comment.helper:
         class: FindbulbBundle\Helper\IdeaCommentHelper
         arguments: [@security.token_storage, @doctrine]
+        
+    findbulb.idea.helper:
+        class: FindbulbBundle\Helper\IdeaHelper
+        arguments: [@security.token_storage, @doctrine]
