@@ -27,8 +27,7 @@
         <a class="fa-2x fa fa-plus-circle" href="{{ path('findbulb_upvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.up}}
         <a class="fa-2x fa fa-minus-circle" href="{{ path('findbulb_downvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.down}}
     {% else %}
-{#        nie mozna glosowac jak sie jest autorem lub zaglosowano wczesniej#}
-
+        {#        nie mozna glosowac jak sie jest autorem lub zaglosowano wczesniej#}
         {{idea.sumvotes.up}}/{{idea.sumvotes.down}} 
     {% endif %}
     <br />
