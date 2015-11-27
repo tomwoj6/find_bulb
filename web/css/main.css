@@ -14,6 +14,25 @@ padding:20px;
     padding:10px 0px 20px 0px;
     margin:0px 0px 20px 0px;
 }
+
+input.form-control  {
+max-width:300px;
+}
+
+.form-group div {
+max-width:300px;
+}
+
+input[type="checkbox"].bigCheckbox {
+margin:10px 0px;
+}
+.form-group label {
+max-width:200px;
+}
+
+
+/* Main Navigation */
+
 .searchBox {
     display: block;
     float: right;
@@ -30,7 +49,3 @@ padding:20px;
 .searchBox input {
     margin: 0;
 }
-
-/* Main Navigation */
-
-
