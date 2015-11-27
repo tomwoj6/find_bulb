@@ -5,11 +5,16 @@
 
 {% block content %}
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    
+       <div class="header">
+          <h3>Registration</h3>
+       </div>
+      
         {{ form_widget(form) }}
         
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <input class="btn btn-default" type="submit" value="{{ 'registration.submit'|trans }}" />
+            <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
         </div>
       </div>
     {{ form_end(form) }}
