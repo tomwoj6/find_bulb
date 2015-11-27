@@ -25,7 +25,14 @@ class IdeaController extends Controller{
           $em = $this->getDoctrine()->getManager();
           $ideaData = $ideaForm->getData();
           $ideaData->setUserAdd($this->getUser());
+          
+          $ideaHistory = new IdeaHistory();
+          $ideaHistory->setIdea($ideaData);
+          $ideaHistory->setUser($this->getUser());
+          $ideaHistory->setAction('Add Idea.');
+          
           $em->persist($ideaData);
+          $em->persist($ideaHistory);
           $em->flush();
           
           $this->get('session')->getFlashBag()->set('success', 'Dodano pomysł');
@@ -71,19 +78,16 @@ class IdeaController extends Controller{
     
     public function editAction(Request $request, $ideaId){
         $em = $this->getDoctrine()->getManager();
-        
-        
         $ideaFormType = new IdeaFormType();
         $idea = $em->getRepository('FindbulbBundle:Idea')->find($ideaId);
         $ideaForm = $this->createForm($ideaFormType, $idea);
-        
         $ideaForm->handleRequest($request);
         if($ideaForm->isValid()){
           $ideaData = $ideaForm->getData();
           $ideaHistory = new IdeaHistory();
           $ideaHistory->setIdea($ideaData);
           $ideaHistory->setUser($this->getUser());
-          $ideaHistory->setAction('Edycja pomysłu.');
+          $ideaHistory->setAction('Edit Idea.');
           
           $em->persist($ideaData);
           $em->persist($ideaHistory);
@@ -92,13 +96,19 @@ class IdeaController extends Controller{
           $this->get('session')->getFlashBag()->set('success', 'Edycja ok.');
           return $this->redirectToRoute('findbulb_homepage');
         }
-        
-        
         return $this->render('FindbulbBundle:Idea:editIdea.html.twig', array(
             'idea' => $ideaForm->createView()
         ));
     }
-    
+    public function closeAction($ideaId){
+        $closed = $this->get('findbulb.idea.helper')->close($ideaId);
+        if($closed){
+            $this->get('session')->getFlashBag()->set('success', 'Successfully closed!');
+            return $this->redirectToRoute('findbulb_homepage');
+        }else{
+            return new \Symfony\Component\HttpFoundation\Response('Error');
+        }
+    }
     
     public function addCommentAction(Request $request){
         $ideaId = $this->get('findbulb.comment.helper')->addComment($request);
