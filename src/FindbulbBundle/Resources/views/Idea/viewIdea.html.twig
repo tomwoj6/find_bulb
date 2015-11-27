@@ -48,11 +48,19 @@
             <div class="comment-level-1">
                 <span>{{ comment.userAdd.username }} at {{ comment.dateAdd|date('Y-m-d H:i:s') }}</span>
                 <a class="comment-response" data-comment="{{ comment.id }}" data-author="{{ comment.userAdd.username }}">reply</a>
-                <div>{{ comment.text }}</div>
+                {% if (comment.children|length == 0 and comment.userAdd == app.user) %}
+                    <a href="{{ path('findbulb_del_comment', { 'commentId': comment.id }) }}" class="comment-delete" data-comment="{{ comment.id }}" data-author="{{ comment.userAdd.username }}">delete</a>
+                {% endif %}
+
+                {% if comment.active == 0 %}
+                    <div><i>Comment deleted.</i></div>
+                {% else%}
+                    <div>{{ comment.text }}</div>
+                {% endif%}
                 {% for child in comment.children %}
                     <div class="comment-level-2">
                         <span>{{ child.userAdd.username }} at {{ child.dateAdd|date('Y-m-d H:i:s') }}</span>
-                        <a class="comment-response" data-comment="{{ comment.id }}" data-author="{{ child.userAdd.username }}">reply</a>
+                        <a  class="comment-response" data-comment="{{ comment.id }}" data-author="{{ child.userAdd.username }}">reply</a>
                         <div>{{ child.text }}</div>
                     </div>
                 {% endfor %}
