@@ -14,10 +14,6 @@ findbulb_view_idea:
     path: /view/{ideaId}
     defaults: { _controller: FindbulbBundle:Idea:view }
 
-findbulb_add_comment:
-    path: /add-comment
-    defaults: { _controller: FindbulbBundle:Idea:addComment }
-    
 findbulb_edit_idea:
     path: /edit/{ideaId}
     defaults: { _controller: FindbulbBundle:Idea:edit }
@@ -25,3 +21,16 @@ findbulb_edit_idea:
 findbulb_close_idea:
     path: /close/{ideaId}
     defaults: { _controller: FindbulbBundle:Idea:close }
+    
+    
+    
+    
+    
+    
+findbulb_del_comment:
+    path: /del-comment/{commentId}
+    defaults: { _controller: FindbulbBundle:Idea:delComment }
+    
+findbulb_add_comment:
+    path: /add-comment
+    defaults: { _controller: FindbulbBundle:Idea:addComment }
