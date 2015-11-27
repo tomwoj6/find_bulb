@@ -4,7 +4,7 @@
     min-height: 100px;
     max-height: 150px;
     border: 1px solid rgb(227, 227, 227);
-    background-color: #DDFFD2;
+
 }
 .col-md-1{
     text-align: center;
@@ -21,4 +21,10 @@
 }
 h3{
     margin-top: 10px;
+}
+.ideaActive{
+    background-color: #DDFFD2;
+}
+.ideaInactive{
+    background-color: #ffcccc;
 }
