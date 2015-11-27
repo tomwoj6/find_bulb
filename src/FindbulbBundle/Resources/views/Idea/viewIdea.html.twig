@@ -3,62 +3,77 @@
 {#sam content#}
 
 {% block content %}
-    <h1>{{ idea.title }}</h1><br/>
+    <h1>
+        {{ idea.title }}
+        {% if idea.active == 0 %}
+            <span class="fa fa-lock" title="Closed"></span>
+        {% endif %}
+    </h1><br/>
     {{ idea.description }}
-    
+
     <br/>
     <br/>
     Author: <a href="{{ path('findbulb_view_profile', { 'userId': idea.userAdd.id }) }}">{{ idea.userAdd.username }}</a><br />
     Date: {{ idea.dateAdd|date('Y-m-d H:i:s') }}<br />
     Category: {{ idea.category.name }}<br />
     Type: {{ idea.type.name }}<br/>
+
+    {% if idea.userAdd == app.user %}
+        <a class="btn btn-default" href="{{ path('findbulb_edit_idea', { 'ideaId': idea.id }) }}">Edit Idea</a>
+        <a class="btn btn-danger" href="{{ path('findbulb_close_idea', { 'ideaId': idea.id }) }}">Close</a> <br/>
+    {% endif %}
+    Vote:
     
-    
-    <a href="{{ path('findbulb_edit_idea', { 'ideaId': idea.id }) }}">Edit Idea</a> <br/>
-    
+    <a class="fa-2x fa fa-arrow-up" href="{{ path('findbulb_upvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.up}}
+    <a class="fa-2x fa fa-arrow-down" href="{{ path('findbulb_downvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.down}}
+
+    <br />
     History:<br />
-    
-    
+
+
     {% for h in history %}
-        
         {{ h.user.username }} - {{ h.action }} - {{ h.dateAdd|date('Y-m-d H:i:s') }}<br />
-        
-    {% endfor %}
-    
-    
-    <br/>
-    <br/>
-    
-    <hr>
-    Comments:<br />
-    {% for comment in comments %}
-        <div class="comment-level-1">
-            <span>{{ comment.userAdd.username }} at {{ comment.dateAdd|date('Y-m-d H:i:s') }}</span>
-            <a class="comment-response" data-comment="{{ comment.id }}" data-author="{{ comment.userAdd.username }}">reply</a>
-            <div>{{ comment.text }}</div>
-            
-            {% for child in comment.children %}
-                <div class="comment-level-2">
-                    <span>{{ child.userAdd.username }} at {{ child.dateAdd|date('Y-m-d H:i:s') }}</span>
-                    <a class="comment-response" data-comment="{{ comment.id }}" data-author="{{ child.userAdd.username }}">reply</a>
-                    <div>{{ child.text }}</div>
-                </div>
-            {% endfor %}
-            
-        </div>
     {% endfor %}
 
-    <hr/>
-    <div class="comment-add">
-        Add comment:
-        {{ form_start(commentsForm) }}
-        {{ form_widget(commentsForm.text) }}
-        {{ form_widget(commentsForm.idea, {'value' : idea.id}) }}
-        {{ form_widget(commentsForm.submit) }}
-        
-        {{ form_end(commentsForm) }}
-    </div>
-    
+
+    <br/>
+    <br/>
+
+    <hr>
+    Comments:<br />
+    {% if idea.active == 1 %}
+        {% for comment in comments %}
+            <div class="comment-level-1">
+                <span>{{ comment.userAdd.username }} at {{ comment.dateAdd|date('Y-m-d H:i:s') }}</span>
+                <a class="comment-response" data-comment="{{ comment.id }}" data-author="{{ comment.userAdd.username }}">reply</a>
+                <div>{{ comment.text }}</div>
+                {% for child in comment.children %}
+                    <div class="comment-level-2">
+                        <span>{{ child.userAdd.username }} at {{ child.dateAdd|date('Y-m-d H:i:s') }}</span>
+                        <a class="comment-response" data-comment="{{ comment.id }}" data-author="{{ child.userAdd.username }}">reply</a>
+                        <div>{{ child.text }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <hr/>
+        <div class="comment-add">
+            Add comment:
+            {{ form_start(commentsForm) }}
+            {{ form_widget(commentsForm.text) }}
+            {{ form_widget(commentsForm.idea, {'value' : idea.id}) }}
+            {{ form_widget(commentsForm.submit) }}
+
+            {{ form_end(commentsForm) }}
+        </div>
+
+    {% else %}
+        <div class="alert alert-warning">
+            Closed.
+        </div>
+    {% endif %}
+
 {% endblock content %}
 
 {% block stylesheets %}
@@ -66,22 +81,22 @@
     {% stylesheets 
             'css/idea-view.css' 
          filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+    <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock stylesheets %}
 
 {% block javascripts %}
     {{ parent() }}
     <script>
-        
-    $(".comment-response").click(function(){
+
+        $(".comment-response").click(function () {
         {#tekst wyswietlany w textarea#}
-        textInput = '@'+$(this).data('author')+': ';
-        $("#comment_text").val(textInput);
-        $("#comment_text").focus();
+                textInput = '@' + $(this).data('author') + ': ';
+                $("#comment_text").val(textInput);
+                $("#comment_text").focus();
         {#przypisanie na ktory komentarz odpowiadamy#}
-        $("#comment_parent").val($(this).data('comment'));
-    });  
+                $("#comment_parent").val($(this).data('comment'));
+            });
     </script>
-    
+
 {% endblock javascripts %}
