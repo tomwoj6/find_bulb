@@ -1,15 +1,14 @@
 {# empty Twig template #}
 {#override strony logowania#}
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "FindbulbBundle:Home:base.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
 
 <div class="header">
-    
+     <h3>Logowanie</h3>
 </div>
-<div class="container">
     
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -36,12 +35,11 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <input class="btn btn-default" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+              <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+               <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default">Register</a>   
             </div>
           </div>
     </form>
-      <a href="{{ path('fos_user_registration_register') }}">Register</a>    
-</div>
 
 {#tutaj zmieniamy glowy szablon strony logowana #}
     

@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         {% block stylesheets %}
             {% stylesheets 
-                'css/bootstrap-theme.min.css' 
                 'css/bootstrap.min.css' 
                 'css/font-awesome.min.css' 
                 'css/main.css' 
@@ -15,15 +14,75 @@
         {% endblock stylesheets %}
     </head>
     <body>
-        <div class="header">
-        </div>
-        <div class="container">
+            <section class="main">
+            <header>
+            
+               <h1>Find Bulb <small>Beta</small></h1>
+               <hr>
+               
+               <nav class="navbar navbar-default">
+                      <div class="container-fluid">
+                      <!-- Brand and toggle get grouped for better mobile display -->
+                           <div class="navbar-header">
+                                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                   </button>
+                                   <a class="navbar-brand" href="#">Brand</a>
+                           </div>
+
+                           <!-- Collect the nav links, forms, and other content for toggling -->
+                           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                               <ul class="nav navbar-nav">
+                                 <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                                 <li><a href="#">Link</a></li>
+                                 <li class="dropdown">
+                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                     <ul class="dropdown-menu">
+                                     <li><a href="#">Action</a></li>
+                                     <li><a href="#">Another action</a></li>
+                                     <li><a href="#">Something else here</a></li>
+                                     <li role="separator" class="divider"></li>
+                                     <li role="separator" class="divider"></li>
+                                     <li><a href="#">One more separated link</a></li>
+                                     </ul>
+                                 </li>
+                              </ul>
+                              <form class="navbar-form navbar-right SearchBox" role="search">
+                                   <input type="text" placeholder="Search" class="form-control">
+                                   <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                              </form>
+                              
+                          </div><!-- /.navbar-collapse -->
+                      </div><!-- /.container-fluid -->
+             </nav>
+            
+            </header>
+            
+             <div class="container">
+             {% if app.request.hasPreviousSession %}
+             {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}a
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% endif %}
+            <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+              </div>
+
 {#            wiadomosci flash#}
             {% include 'FindbulbBundle:Flash:default.html.twig' %}
             
             {% block content %}
             {% endblock content %}
-        </div>
+            </div>
+        </section>    
     {% block javascripts %}
         {% javascripts 
             'js/bootstrap.min.js' 
