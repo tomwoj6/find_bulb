@@ -52,6 +52,11 @@ class Comments
     protected $dateAdd;
     
     /**
+     * @ORM\Column(name="active", type="boolean")
+     */
+    protected $active;
+    
+    /**
      * Constructor
      */
     
@@ -59,6 +64,7 @@ class Comments
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateAdd = new \DateTime('now');
+        $this->active = true;
     }
 
     
@@ -219,5 +225,28 @@ class Comments
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Comments
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }
