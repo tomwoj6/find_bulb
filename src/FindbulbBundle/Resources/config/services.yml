@@ -10,3 +10,9 @@ services:
     findbulb.idea.helper:
         class: FindbulbBundle\Helper\IdeaHelper
         arguments: [@security.token_storage, @doctrine]
+        
+    findbulb.twig.extension:
+        class: FindbulbBundle\Twig\Extension\BulbExtension
+        arguments: [@doctrine, @security.context]
+        tags:
+               - { name: twig.extension }
