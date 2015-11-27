@@ -9,7 +9,13 @@
     <a class="btn btn-default" href="{{ path('findbulb_new_idea') }}">Dodaj Pomysł</a>
 
     {% for idea in ideas %}
-        <div class="row ">
+        {% if idea.active == 1 %}
+            {% set colorClass = 'ideaActive' %}
+        {% else %}
+            {% set colorClass = 'ideaInactive' %}
+        {% endif %}    
+        
+        <div class="row {{ colorClass }}">
             <div class="col-md-1"> <span class="fa fa-{{ idea.category.icon }}"></span> </div>
             <div class="col-md-10">
                 <div class="row-title">
@@ -17,13 +23,16 @@
                         <a href="{{ path('findbulb_view_idea', { 'ideaId': idea.id }) }}">
                             {{ idea.title }}
                         </a>
+                        {% if idea.active == 0 %}
+                            <span class="fa fa-lock" title="Closed"></span>
+                        {% endif %}
                     </h4>
                 </div>
                 <div class="row-desc">{{ idea.description }}
-                <br/>
-                Dodane przez: {{idea.userAdd.username}} 
-                <br/>
-                Komentarzy({{ idea.comments|length }})
+                    <br/>
+                    Dodane przez: {{idea.userAdd.username}} 
+                    <br/>
+                    Komentarzy({{ idea.comments|length }})
                 </div>
             </div>
             <div class="col-md-1">
@@ -33,7 +42,7 @@
         </div>
     {% endfor %}
 
-    
+
 {% endblock content %}
 
 {% block stylesheets %}
@@ -41,6 +50,6 @@
     {% stylesheets 
             'css/main-index.css' 
          filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+    <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock stylesheets %}
