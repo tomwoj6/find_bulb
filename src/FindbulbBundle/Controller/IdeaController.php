@@ -67,12 +67,12 @@ class IdeaController extends Controller{
     }
     public function upVoteAction($ideaId){
         $this->get('findbulb.vote.helper')->ideaVote($ideaId, 'up');
-        $this->get('session')->getFlashBag()->set('success', 'Zagłosowano na +');
+        $this->get('session')->getFlashBag()->set('success', 'Vote+');
         return $this->redirectToRoute('findbulb_homepage');
     }
     public function downVoteAction($ideaId){
         $this->get('findbulb.vote.helper')->ideaVote($ideaId, 'down');
-        $this->get('session')->getFlashBag()->set('success', 'Zagłosowano na -');
+        $this->get('session')->getFlashBag()->set('success', 'Vote-');
         return $this->redirectToRoute('findbulb_homepage');
     }
     
@@ -110,9 +110,24 @@ class IdeaController extends Controller{
         }
     }
     
+    
+    
+    
+    
     public function addCommentAction(Request $request){
         $ideaId = $this->get('findbulb.comment.helper')->addComment($request);
         $this->get('session')->getFlashBag()->set('success', 'Dodano komentarz');
         return $this->redirect($this->generateUrl('findbulb_view_idea', array('ideaId' => $ideaId)));
+    }
+    public function delCommentAction($commentId){
+        $em = $this->getDoctrine()->getManager();
+        $comment = $em->getRepository('FindbulbBundle:Comments')->find($commentId);
+        $comment->setActive(false);
+        $em->persist($comment);
+        $em->flush();
+        
+        $this->get('session')->getFlashBag()->set('success', 'Comment deleted.');
+        return $this->redirectToRoute('findbulb_view_idea', array('ideaId' => $comment->getIdea()->getId()));
+
     }
 }
