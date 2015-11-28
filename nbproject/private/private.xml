@@ -4,29 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Controller/IdeaController.php</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/Category.php</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Flash/default.html.twig</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Home/base.html.twig</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Helper/IdeaCommentHelper.php</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Home/index.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/Idea.php</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Form/Type/IdeaFormType.php</file>
-            <file>file:/C:/wamp/www/find_bulb/.gitignore</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Repository/IdeaRepository.php</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/config/routing-commision.yml</file>
-            <file>file:/C:/wamp/www/find_bulb/.git/config</file>
-            <file>file:/C:/wamp/www/find_bulb/app/config/config.yml</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Idea/newIdea.html.twig</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/Type.php</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Twig/Extension/BulbExtension.php</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/Comments.php</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/config/services.yml</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Helper/IdeaVoteHelper.php</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Helper/IdeaHelper.php</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Idea/viewIdea.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/config/routing-idea.yml</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/IdeaFiles.php</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Controller/UserController.php</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Controller/FindbulbController.php</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Commision/newCommision.html.twig</file>
-            <file>file:/C:/wamp/www/find_bulb/web/css/main.css</file>
-            <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Entity/Role.php</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/IdeaUserVotes.php</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Repository/UserRepository.php</file>
-            <file>file:/C:/wamp/www/find_bulb/web/css/main-index.css</file>
         </group>
     </open-files>
 </project-private>
