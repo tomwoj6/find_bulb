@@ -60,7 +60,7 @@
                 {% for child in comment.children %}
                     <div class="comment-level-2">
                         <span>{{ child.userAdd.username }} at {{ child.dateAdd|date('Y-m-d H:i:s') }}</span>
-                        <a  class="comment-response" data-comment="{{ comment.id }}" data-author="{{ child.userAdd.username }}">reply</a>
+                        <a  class="comment-response" data-comment="{{ child.id }}" data-author="{{ child.userAdd.username }}">reply</a>
                         <div>{{ child.text }}</div>
                     </div>
                 {% endfor %}

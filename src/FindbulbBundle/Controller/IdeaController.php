@@ -51,6 +51,45 @@ class IdeaController extends Controller{
         if(!$idea){ throw $this->createNotFoundException('Bad Idea Id (ID = '.$ideaId.')');}
         //i oddzielnie jego komentarze
         $comments = $em->getRepository('FindbulbBundle:Comments')->getIdeaComments($idea->getId());
+        //obrabianie komentarzy
+        
+//        foreach ($comments as $comment){
+//            echo var_dump($comment);
+           
+//            echo var_dump($comment->getLevel());
+//            echo var_dump($comment->getChildren()->getLevel());
+            
+//            $i = 1;
+//            $commentArray = $comment; 
+
+//            do {
+//                echo $i.'<br/>';
+//                foreach ($commentArray as $c){
+//                    if(!$c->getId()){
+//                        $i = 0;
+//                    }else{
+//                        $i = 2;
+//                    }
+//                    echo var_dump($i);
+//                }
+//            if($comment)
+//                $comment = $comment->getChildren();
+//                $i++;
+//                echo var_dump($comment->owner);
+                
+//            }while ($i);
+            
+            
+            
+//        }
+        
+        
+        
+        
+        
+        
+        
+        //-----------------------
         $history = $em->getRepository('FindbulbBundle:IdeaHistory')->findByIdea($idea);
         //form dodawania komentarza
         $commentFormType = new CommentFormType();
@@ -58,12 +97,13 @@ class IdeaController extends Controller{
             'action' => $this->generateUrl('findbulb_add_comment'),
         ));
         //--------
-        return $this->render('FindbulbBundle:Idea:viewIdea.html.twig', array(
-            'idea' => $idea,
-            'comments' => $comments,
-            'history' => $history,
-            'commentsForm' => $commentForm->createView()
-        ));
+        return new \Symfony\Component\HttpFoundation\Response('Test');
+//        return $this->render('FindbulbBundle:Idea:viewIdea.html.twig', array(
+//            'idea' => $idea,
+//            'comments' => $comments,
+//            'history' => $history,
+//            'commentsForm' => $commentForm->createView()
+//        ));
     }
     public function upVoteAction($ideaId){
         $this->get('findbulb.vote.helper')->ideaVote($ideaId, 'up');

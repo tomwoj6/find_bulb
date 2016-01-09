@@ -2,8 +2,8 @@
 namespace FindbulbBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
-
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\PersistentCollection;
 /**
  * @ORM\Entity(repositoryClass="FindbulbBundle\Repository\CommentsRepository")
  * @ORM\Table(name="comments")
@@ -35,6 +35,7 @@ class Comments
     private $text;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Comments", mappedBy="parent")
      */
     private $children;
@@ -62,12 +63,16 @@ class Comments
     
     public function __construct()
     {
-        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->children = new ArrayCollection();
         $this->dateAdd = new \DateTime('now');
         $this->active = true;
     }
 
     
+    public function getLevel()
+    {
+        return $this->parent ? $this->parent->getLevel() + 1 : 0;
+    }
 
     /**
      * Get id
@@ -123,6 +128,29 @@ class Comments
     public function getDateAdd()
     {
         return $this->dateAdd;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Comments
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 
     /**
@@ -197,7 +225,7 @@ class Comments
     /**
      * Get children
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getChildren()
     {
@@ -225,28 +253,5 @@ class Comments
     public function getParent()
     {
         return $this->parent;
-    }
-
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return Comments
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-
-        return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return boolean 
-     */
-    public function getActive()
-    {
-        return $this->active;
     }
 }
