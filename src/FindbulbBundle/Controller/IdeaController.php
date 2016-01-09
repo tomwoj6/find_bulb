@@ -97,13 +97,13 @@ class IdeaController extends Controller{
             'action' => $this->generateUrl('findbulb_add_comment'),
         ));
         //--------
-        return new \Symfony\Component\HttpFoundation\Response('Test');
-//        return $this->render('FindbulbBundle:Idea:viewIdea.html.twig', array(
-//            'idea' => $idea,
-//            'comments' => $comments,
-//            'history' => $history,
-//            'commentsForm' => $commentForm->createView()
-//        ));
+//        return new \Symfony\Component\HttpFoundation\Response('Test');
+        return $this->render('FindbulbBundle:Idea:viewIdea.html.twig', array(
+            'idea' => $idea,
+            'comments' => $comments,
+            'history' => $history,
+            'commentsForm' => $commentForm->createView()
+        ));
     }
     public function upVoteAction($ideaId){
         $this->get('findbulb.vote.helper')->ideaVote($ideaId, 'up');

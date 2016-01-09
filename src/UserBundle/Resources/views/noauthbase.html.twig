@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        {% block stylesheets %}
+            {% stylesheets 
+                'css/bootstrap.min.css' 
+                'css/font-awesome.min.css' 
+                'css/main.css' 
+             filter='cssrewrite' %}
+
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+            <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        {% endblock stylesheets %}
+    </head>
+    <body>
+
+        <header class="header-login"> 
+            <div class="logo-container">
+                <img class="logo" src="{{app.request.scheme ~ '://' ~ app.request.host}}/find_bulb/web/images/bulb-logo.svg" >
+                <div class="logo-name">FindBulb</div>
+            </div>
+
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </header>
+        <div class="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <footer class="">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi u
+        </footer>
+        {% block javascripts %}
+            {% javascripts 
+            'js/jquery-1.11.3.min.js' 
+            'js/bootstrap.min.js' 
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            <script>
+            $('.logo-container').click(function(){
+               window.location.href = "{{app.request.scheme ~ '://' ~ app.request.host}}/find_bulb/web/app_dev.php";
+            });
+            </script>
+                
+        {% endblock javascripts %}
+    </body>
+</html>

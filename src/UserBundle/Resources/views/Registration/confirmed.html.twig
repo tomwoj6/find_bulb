@@ -1,20 +1,21 @@
-{% extends "FindbulbBundle:Home:base.html.twig" %}
-
 {% trans_default_domain 'FOSUserBundle' %}
+
+{% extends "UserBundle::noauthbase.html.twig" %}
 {#sam content#}
 
-{% block fos_user_content %}
-    <div class="header">
-         <h3>Success!</h3>
+{% block content %}
+    <div class="container">
+            <div class="alert alert-success alert-margin-top-50">
+                <h4>Success!</h4>
+                {{ 'registration.confirmed'|trans({'%username%': user.username}) }}
+                <br/>
+                You can now <a href="{{ path('fos_user_security_login') }}">log in!</a>
+            </div>
+            {% if targetUrl %}
+                <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+            {% endif %}
+
     </div>
-        <div class="alert alert-success">
-            <h4>Success!</h4>
-            {{ 'registration.confirmed'|trans({'%username%': user.username}) }}
-            <br/>
-            You can now <a href="{{ path('fos_user_security_login') }}">log in!</a>
         
-        </div>
-        {% if targetUrl %}
-            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-        {% endif %}
-{% endblock fos_user_content%}
+        
+{% endblock content %}

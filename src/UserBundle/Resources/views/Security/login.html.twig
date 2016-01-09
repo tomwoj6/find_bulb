@@ -1,46 +1,32 @@
 {# empty Twig template #}
 {#override strony logowania#}
-{% extends "FindbulbBundle:Home:base.html.twig" %}
+{% extends "UserBundle::noauthbase.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+    <form class="form-inline form-login" action="{{ path("fos_user_security_check") }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />    
+        <div class="form-group">
+            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="login or e-mail"/>
+        </div>
+        <div class="form-group">
+            <input type="password"  class="form-control" id="password" name="_password" required="required" placeholder="password"/>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-warning" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">Register</a>   
+        </div>
+    </form>
+{% endblock fos_user_content %}
 
-<div class="header">
-     <h3>Log in</h3>
-</div>
-    
+{% block content %}
+    {% include 'FindbulbBundle:Flash:default.html.twig' %}
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-    <form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />    
-          <div class="form-group">
-              <label class="control-label col-sm-2" for="username">{{ 'security.login.username'|trans }}</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" />
-            </div>
-          </div>       
-          <div class="form-group">
-              <label class="control-label col-sm-2" for="password">{{ 'security.login.password'|trans }}</label>
-            <div class="col-sm-10">
-              <input type="password"  class="form-control" id="password" name="_password" required="required" />
-            </div>
-          </div> 
-          <div class="form-group">
-              <label class="control-label col-sm-2" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-            <div class="col-sm-10">
-              <input type="checkbox" class="bigCheckbox" id="remember_me" name="_remember_me" value="on" />
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-               <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default">Register</a>   
-            </div>
-          </div>
-    </form>
 
-{#tutaj zmieniamy glowy szablon strony logowana #}
-    
-{% endblock fos_user_content %}
+    <div class="centered-register">
+        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">Register for free</a>   
+    </div>
+{% endblock content %}
