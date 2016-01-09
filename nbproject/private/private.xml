@@ -5,11 +5,19 @@
         <group>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Controller/IdeaController.php</file>
             <file>file:/C:/wamp/www/find_bulb/vendor/doctrine/orm/lib/Doctrine/ORM/PersistentCollection.php</file>
-            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Idea/viewIdea.html.twig</file>
+            <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Resources/views/Registration/register_content.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/Idea.php</file>
+            <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Resources/views/noauthbase.html.twig</file>
+            <file>file:/C:/wamp/www/find_bulb/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Entity/Comments.php</file>
             <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Entity/User.php</file>
+            <file>file:/C:/wamp/www/find_bulb/web/images/bulb-logo.svg</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Idea/viewIdea.html.twig</file>
+            <file>file:/C:/wamp/www/find_bulb/app/config/config.yml</file>
+            <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Resources/views/Security/login.html.twig</file>
+            <file>file:/C:/wamp/www/find_bulb/web/css/main.css</file>
             <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Entity/Role.php</file>
+            <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Resources/views/Registration/confirmed.html.twig</file>
         </group>
     </open-files>
 </project-private>
