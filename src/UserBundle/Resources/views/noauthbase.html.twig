@@ -21,19 +21,17 @@
                 <img class="logo" src="{{app.request.scheme ~ '://' ~ app.request.host}}/find_bulb/web/images/bulb-logo.svg" >
                 <div class="logo-name">FindBulb</div>
             </div>
-
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </header>
         <div class="content">
+            {% if (error is defined) and (error is not null)%}
+                <div class="alert alert-danger alert-fixed">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
             {% block content %}
             {% endblock content %}
         </div>
-        <footer class="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi u
-        </footer>
+        {% include 'FindbulbBundle:Home:footer.html.twig' %}
         {% block javascripts %}
             {% javascripts 
             'js/jquery-1.11.3.min.js' 
@@ -42,11 +40,11 @@
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
             <script>
-            $('.logo-container').click(function(){
-               window.location.href = "{{app.request.scheme ~ '://' ~ app.request.host}}/find_bulb/web/app_dev.php";
-            });
+                $('.logo-container').click(function () {
+                    window.location.href = "{{app.request.scheme ~ '://' ~ app.request.host}}/find_bulb/web/app_dev.php";
+                });
             </script>
-                
+
         {% endblock javascripts %}
     </body>
 </html>
