@@ -21,11 +21,6 @@
 {% endblock fos_user_content %}
 
 {% block content %}
-    {% include 'FindbulbBundle:Flash:default.html.twig' %}
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
     <div class="centered-register">
         <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">Register for free</a>   
     </div>

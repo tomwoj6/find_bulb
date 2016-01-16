@@ -2,20 +2,13 @@
 
 {% extends "UserBundle::noauthbase.html.twig" %}
 {#sam content#}
-
 {% block content %}
-    <div class="container">
-            <div class="alert alert-success alert-margin-top-50">
-                <h4>Success!</h4>
+    <div class="alert alert-success alert-fixed">
                 {{ 'registration.confirmed'|trans({'%username%': user.username}) }}
                 <br/>
                 You can now <a href="{{ path('fos_user_security_login') }}">log in!</a>
-            </div>
-            {% if targetUrl %}
-                <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-            {% endif %}
-
+                {% if targetUrl %}
+                    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                 {% endif %}
     </div>
-        
-        
 {% endblock content %}

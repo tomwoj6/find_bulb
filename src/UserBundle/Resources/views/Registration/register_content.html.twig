@@ -4,6 +4,14 @@
 {#sam content#}
 
 {% block content %}
+    {% if not form.vars.valid %}
+        <div class="alert alert-danger alert-fixed">
+            {{ form.email.vars.errors|trim('ERROR: ') }}<br/>
+            {{ form.username.vars.errors|trim('ERROR: ') }}<br/>
+            {{ form.plainPassword.first.vars.errors|trim('ERROR: ') }}<br/>
+            {{ form.plainPassword.second.vars.errors|trim('ERROR: ') }}<br/>
+        </div>
+    {% endif %}
     <div class="container">
         <div class="form-container panel-body">
             {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
