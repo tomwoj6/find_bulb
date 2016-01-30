@@ -24,7 +24,7 @@
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </header>
-        <div class="content">
+        <div class="content-login">
             {% if (error is defined) and (error is not null)%}
                 <div class="alert alert-danger alert-fixed">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}

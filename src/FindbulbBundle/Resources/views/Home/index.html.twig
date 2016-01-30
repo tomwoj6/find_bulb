@@ -4,7 +4,8 @@
 
 {% block content %}
     strona gówna    <br /> 
-    zalogowany jako: {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}">(logout)</a><br />
+    
+    zalogowany jako: {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}"></a><br />
 
     <a class="btn btn-default" href="{{ path('findbulb_new_idea') }}">Dodaj Pomysł</a>
 

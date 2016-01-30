@@ -1,0 +1,55 @@
+/*header*/
+.user-container{
+    color: white;
+    width: 160px;
+    height: 100%;
+    float: right;
+}
+.user-avatar{
+    float: left;
+    display: block;
+    text-indent: -9999px;
+    width: 40px;
+    height: 40px;
+    margin: 7px 5px 5px 5px;
+}
+.user-name{
+    margin: 7px 5px 0px 5px;
+}
+.user-menu{
+    color: white;
+    padding-top: 2px;
+}
+.user-menu > p {
+    margin: 5px;
+}
+.user-menu > ol > li{
+    list-style: none;
+    padding: 5px 0px 5px 10px;
+    background-color: #010223;
+}
+.user-menu > ol > li:hover{
+    background-color: #000248;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+
+.user-menu > ol{
+    padding: 0px;
+}
+
+
+
+/*container*/
+
+.container-fix{
+    padding-top: 55px;
+    
+    min-height: 100%;
+    margin-bottom: -40px; 
+    background: url(../images/2.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}

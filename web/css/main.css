@@ -57,12 +57,12 @@ input[type="checkbox"].bigCheckbox {
 .form-group label {
     max-width:200px;
 }
-.container{
+.container-register{
     /*fix dla menu przylepionego*/
-    padding-top: 55px; 
+    padding-top: 55px;     
 }
 /*kontent + stopka - pozycjonowanie*/
-.content {
+.content-login {
     min-height: 100%;
     margin-bottom: -40px; 
     background: url(../images/2.jpg) no-repeat center center fixed; 
@@ -86,7 +86,9 @@ footer {
     font-size: 11px;
     padding-top: 15px;
 }
-
+.clearboth{
+    clear: both;
+}
 
 /*nadpisanie wlasciwosci bootstrapa*/
 .alert{
@@ -141,4 +143,12 @@ footer {
 /*poprawki alertow*/
 .alert-margin-top-50{
     margin-top: 50px;
+}
+.alert-fixed{
+    position: relative;
+    top: 55px;
+    text-align: center;
+}
+.cursor{
+    cursor: pointer;
 }
