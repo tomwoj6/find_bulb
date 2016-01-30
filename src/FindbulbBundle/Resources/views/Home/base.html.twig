@@ -27,13 +27,8 @@
                 <div class="user-name">{{ app.user.username|slice(0, 15) }}</div>
                 <div class="user-menu clearboth">
                     <ol>
-                        <li>dupa</li>
-                        <li>dupa</li>
-                        <li>dupa</li>
-                        <li>dupa</li>
-                        <li>dupa</li>
-                        <li>dupa</li>
-                        <li>dupa</li>
+                        <li><a class="clear-link-white" href="#">Profil</a></li>
+                        <li><a class="clear-link-white" href="#">Wyloguj</a></li>
                     </ol>
                 </div>
             </div>
@@ -56,6 +51,10 @@
                 $('.logo-container').click(function () {
                     window.location.href = "{{app.request.scheme ~ '://' ~ app.request.host}}/find_bulb/web/app_dev.php/home";
                 });
+                $('.user-menu').find('li').click(function(){
+                    window.location.href = $(this).find('a').attr('href');
+                });
+                
             </script>
 
         {% endblock javascripts %}
