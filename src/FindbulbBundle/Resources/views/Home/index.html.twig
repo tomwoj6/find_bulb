@@ -3,59 +3,75 @@
 {#sam content#}
 
 {% block content %}
-    strona gówna    <br /> 
-    
-    zalogowany jako: {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}"></a><br />
-
-    <a class="btn btn-default" href="{{ path('findbulb_new_idea') }}">Dodaj Pomysł</a>
-
-    {% for idea in ideas %}
-        {% if idea.active == 1 %}
-            {% set colorClass = 'ideaActive' %}
-        {% else %}
-            {% set colorClass = 'ideaInactive' %}
-        {% endif %}    
-
-        <div class="row {{ colorClass }}">
-            <div class="col-md-1"> <span class="fa fa-{{ idea.category.icon }}"></span> </div>
-            <div class="col-md-10">
-                <div class="row-title">
-                    <h4>
-                        <a href="{{ path('findbulb_view_idea', { 'ideaId': idea.id }) }}">
-                            {{ idea.title }}
-                        </a>
-                        {% if idea.active == 0 %}
-                            <span class="fa fa-lock" title="Closed"></span>
-                        {% endif %}
-                    </h4>
-                </div>
-                <div class="row-desc">{{ idea.description }}
-                    <br/>
-                    Dodane przez: {{idea.userAdd.username}} 
-                    <br/>
-                    Komentarzy({{ idea.comments|length }})
-                </div>
-            </div>
-            <div class="col-md-1">
-                {% if isUserVoted(idea.id) %}
-                    <a class="fa-2x fa fa-plus-circle" href="{{ path('findbulb_upvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.up}}
-                    <a class="fa-2x fa fa-minus-circle" href="{{ path('findbulb_downvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.down}}
-                {% else %}
-                    {#        nie mozna glosowac jak sie jest autorem lub zaglosowano wczesniej#}
-                    {{idea.sumvotes.up}}/{{idea.sumvotes.down}} 
-                {% endif %}
-            </div>
+    <div class="row" style="height: 100px;">
+        <div class="col-md-12">
+            <input type="text" class=""> Wyszkukiwarka
         </div>
-    {% endfor %}
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn btn-default" href="{{ path('findbulb_new_idea') }}">Dodaj Pomysł</a>
+            <a class="btn btn-default" href="#">Najlepsze</a>
+            <a class="btn btn-default" href="#">Zakończone</a>
+            <a class="btn btn-default" href="#">Najpopularniejsze</a>
+
+        </div>
+        <div class="col-md-10 left-border">
+            {% for idea in ideas %}
+                {% if idea.active == 1 %}
+                    {% set colorClass = 'ideaActive' %}
+                {% else %}
+                    {% set colorClass = 'ideaInactive' %}
+                {% endif %}    
+
+                <div class="row row-idea" data-href="{{ path('findbulb_view_idea', { 'ideaId': idea.id }) }}">
+                    <div class="col-md-1"> <span class="fa fa-{{ idea.category.icon }}"></span> </div>
+                    <div class="col-md-10">
+                        <div class="row-title">
+                            <h4>
+                                {{ idea.title }}
+                                {% if idea.active == 0 %}
+                                    <span class="fa fa-lock" title="Closed"></span>
+                                {% endif %}
+                            </h4>
+                        </div>
+                        <div class="row-desc">{{ idea.description }}/div>
+                            <div class="row-desc2">Dodane przez: {{idea.userAdd.username}}, Komentarzy({{ idea.comments|length }})</div>
+                        </div>
+                        <div class="col-md-1">
+                            {% if isUserVoted(idea.id) %}
+                                <a class="fa-2x fa fa-plus-circle" href="{{ path('findbulb_upvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.up}}
+                                <a class="fa-2x fa fa-minus-circle" href="{{ path('findbulb_downvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.down}}
+                            {% else %}
+                                {#        nie mozna glosowac jak sie jest autorem lub zaglosowano wczesniej#}
+                                {{idea.sumvotes.up}}/{{idea.sumvotes.down}} 
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="clear-fix"></div>
+        </div>
 
 
-{% endblock content %}
+    {% endblock content %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {% stylesheets 
+    {% block stylesheets %}
+        {{ parent() }}
+        {% stylesheets 
             'css/main-index.css' 
          filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-{% endblock stylesheets %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock stylesheets %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            $('.row-idea').click(function () {
+                window.location.href = $(this).data('href');
+            });
+        </script>
+
+    {% endblock javascripts %}
