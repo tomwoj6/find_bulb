@@ -4,6 +4,12 @@
     width: 160px;
     height: 100%;
     float: right;
+    
+}
+
+.user-container:hover{
+    cursor: pointer;
+    background-color: #262748;
 }
 .user-avatar{
     float: left;
@@ -19,6 +25,7 @@
 .user-menu{
     color: white;
     padding-top: 2px;
+    display: none;
 }
 .user-menu > p {
     margin: 5px;
@@ -29,9 +36,11 @@
     background-color: #010223;
 }
 .user-menu > ol > li:hover{
-    background-color: #000248;
+    background-color: #262748;
     cursor: pointer;
-    border-bottom: 1px solid white;
+}
+.user-container:hover > .user-menu{
+    display: inherit;
 }
 
 .user-menu > ol{
