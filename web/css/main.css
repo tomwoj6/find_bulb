@@ -123,7 +123,9 @@ footer {
     float: left;
     cursor: pointer;
 }
-
+.logo-container:hover{
+    background-color: #262748;
+}
 /*form rejestracji*/
 .fos_user_registration_register{
     margin: auto;
@@ -151,4 +153,13 @@ footer {
 }
 .cursor{
     cursor: pointer;
+}
+/*zmiany linkow*/
+.clear-link-white{
+    text-decoration: none;
+    color: white;
+}
+.clear-link-white:hover{
+    text-decoration: none;
+    color: white;
 }

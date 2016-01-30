@@ -1,18 +1,5 @@
-.row{
-    background-color: red;
-    margin: 10px 0px 0px 0px;
-    min-height: 100px;
-    max-height: 150px;
-    border: 1px solid rgb(227, 227, 227);
 
-}
-.col-md-1{
-    text-align: center;
-    padding: 5px;
-}
-.col-md-10{
-    padding: 5px;
-}
+
 .row-title{
     margin-left: 20px;
 }
@@ -27,4 +14,18 @@ h3{
 }
 .ideaInactive{
     background-color: #ffcccc;
+}
+
+/*style dobre*/
+.left-border{
+    border-left: 1px solid #08C;
+}
+.row-idea{
+    margin-bottom: 5px;
+    height: 110px;
+    background-color: rgb(239, 245, 255);
+}
+.row-idea:hover{
+    background-color: #DCE9FF;
+    cursor: pointer;
 }
