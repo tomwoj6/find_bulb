@@ -5,15 +5,18 @@
         <group>
             <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Resources/views/Registration/register_content.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Home/base.html.twig</file>
-            <file>file:/C:/wamp/www/find_bulb/app/config/config.yml</file>
-            <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Resources/views/Security/login.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/public/css/homepage.css</file>
             <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Home/index.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Resources/views/noauthbase.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Entity/User.php</file>
+            <file>file:/C:/wamp/www/find_bulb/web/css/bootstrap.min.css</file>
+            <file>file:/C:/wamp/www/find_bulb/app/config/config.yml</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/Idea/viewIdea.html.twig</file>
+            <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Resources/views/Security/login.html.twig</file>
+            <file>file:/C:/wamp/www/find_bulb/src/FindbulbBundle/Resources/views/User/profile.html.twig</file>
             <file>file:/C:/wamp/www/find_bulb/web/css/main.css</file>
             <file>file:/C:/wamp/www/find_bulb/src/UserBundle/Entity/Role.php</file>
-            <file>file:/C:/wamp/www/find_bulb/web/css/bootstrap.min.css</file>
+            <file>file:/C:/wamp/www/find_bulb/web/css/main-index.css</file>
         </group>
     </open-files>
 </project-private>
