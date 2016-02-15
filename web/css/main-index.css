@@ -1,21 +1,3 @@
-
-
-.row-title{
-    margin-left: 20px;
-}
-.row-desc{
-    margin-left: 20px;
-}
-h3{
-    margin-top: 10px;
-}
-.ideaActive{
-    background-color: #DDFFD2;
-}
-.ideaInactive{
-    background-color: #ffcccc;
-}
-
 /*style dobre*/
 .left-border{
     border-left: 1px solid #08C;
@@ -27,5 +9,83 @@ h3{
 }
 .row-idea:hover{
     background-color: #DCE9FF;
+}
+.icon-column{
+    height: 110px;
+    line-height: 127px;
+    color: #bcbcbc;
+    text-align: center;
+}
+.desc-column{
+    position: relative;
+    height: 110px;
+}
+.vote-column{
+    height: 110px;
+    line-height: 110px;
+    text-align: center;
+    position: relative;
+}
+.vote-column > a{
+    text-decoration: none;
+}
+
+.row-desc-author{
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 10px;
+}
+
+.plus-vote-container, .minus-vote-container{
+    width: 32px;
+    height: 32px;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 16px;
+    line-height: 30px;
+    color: white;
+}
+.plus-vote-container{
+    background-color: #7fcf66;
+    top: 20px;
+}
+.minus-vote-container{
+    background-color: #ff9696;
+    top: 27px;
+}
+
+.plus-vote-container:hover{
+    background-color: #5fae47;
     cursor: pointer;
+}
+.minus-vote-container:hover{
+    background-color: #ff6868;
+    cursor: pointer;
+}
+.idea-title:hover{
+    color: #a1a1a1;
+}
+
+.nav-container{
+    height: 60px;
+    position: relative;
+}
+.nav-idea{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.col-70{
+    height: 60px;
+}
+.nav-tabs.nav-justified > li > a{
+    border-radius: 0;
+}
+.btn-new{
+    position: absolute;
+    top: 18px;
+    width: 165px;
+}
+.btn-container{
+    position: relative;
 }

@@ -3,19 +3,27 @@
 {#sam content#}
 
 {% block content %}
-    <div class="row" style="height: 100px;">
-        <div class="col-md-12">
-            <input type="text" class=""> Wyszkukiwarka
+    <div class="row nav-container">
+        <div class="col-md-2 col-70 btn-container">
+{#            <input type="text" class=""> Wyszkukiwarka#}
+            <a class="btn btn-warning btn-new" href="{{ path('findbulb_new_idea') }}"> <span class="fa fa-lightbulb-o">&nbsp</span> Add new!</a>
         </div>
-
+        <div class="col-md-10 col-70">
+            <ul class="nav nav-tabs nav-idea nav-justified">
+                <li role="presentation" class="active"><a href="#">New</a></li>
+                <li role="presentation"><a href="#">Best</a></li>
+                <li role="presentation"><a href="#">Popular</a></li>
+            </ul>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-2">
-            <a class="btn btn-default" href="{{ path('findbulb_new_idea') }}">Dodaj Pomysł</a>
-            <a class="btn btn-default" href="#">Najlepsze</a>
-            <a class="btn btn-default" href="#">Zakończone</a>
-            <a class="btn btn-default" href="#">Najpopularniejsze</a>
-
+            Categories
+            <ul>
+            {% for c in categories %}
+                <li>{{ c.name }}</li>
+            {% endfor %}
+            </ul>            
         </div>
         <div class="col-md-10 left-border">
             {% for idea in ideas %}
@@ -25,53 +33,55 @@
                     {% set colorClass = 'ideaInactive' %}
                 {% endif %}    
 
-                <div class="row row-idea" data-href="{{ path('findbulb_view_idea', { 'ideaId': idea.id }) }}">
-                    <div class="col-md-1"> <span class="fa fa-{{ idea.category.icon }}"></span> </div>
-                    <div class="col-md-10">
+                <div class="row row-idea ">
+                    <div class="col-md-2 icon-column"> 
+                        <span class="fa-3x fa fa-{{ idea.category.icon }}"></span> 
+                    </div>
+                    <div class="col-md-8 desc-column">
                         <div class="row-title">
-                            <h4>
+                            <h4 class="cursor idea-title" data-href="{{ path('findbulb_view_idea', { 'ideaId': idea.id }) }}">
                                 {{ idea.title }}
                                 {% if idea.active == 0 %}
                                     <span class="fa fa-lock" title="Closed"></span>
                                 {% endif %}
                             </h4>
                         </div>
-                        <div class="row-desc">{{ idea.description }}/div>
-                            <div class="row-desc2">Dodane przez: {{idea.userAdd.username}}, Komentarzy({{ idea.comments|length }})</div>
-                        </div>
-                        <div class="col-md-1">
-                            {% if isUserVoted(idea.id) %}
-                                <a class="fa-2x fa fa-plus-circle" href="{{ path('findbulb_upvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.up}}
-                                <a class="fa-2x fa fa-minus-circle" href="{{ path('findbulb_downvote_idea', { 'ideaId': idea.id }) }}"></a>{{idea.sumvotes.down}}
-                            {% else %}
-                                {#        nie mozna glosowac jak sie jest autorem lub zaglosowano wczesniej#}
-                                {{idea.sumvotes.up}}/{{idea.sumvotes.down}} 
-                            {% endif %}
-                        </div>
+                        <div class="row-desc"><i>{{ idea.description }}</i></div>
+                        <div class="row-desc-author">Dodane przez: {{idea.userAdd.username}}, Komentarzy({{ idea.comments|length }})</div>
                     </div>
-                {% endfor %}
-            </div>
-            <div class="clear-fix"></div>
+                    <div class="col-md-2 vote-column">
+                        {% if isUserVoted(idea.id) %}
+                            <div class="plus-vote-container">{{ idea.sumvotes.up }}</div>
+                            <div class="minus-vote-container">{{ idea.sumvotes.down }}</div>
+                        {% else %}
+                            {#        nie mozna glosowac jak sie jest autorem lub zaglosowano wczesniej#}
+                            {{idea.sumvotes.up}}/{{idea.sumvotes.down}} 
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
         </div>
+        <div class="clear-fix"></div>
+    </div>
 
 
-    {% endblock content %}
+{% endblock content %}
 
-    {% block stylesheets %}
-        {{ parent() }}
-        {% stylesheets 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets 
             'css/main-index.css' 
          filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-    {% endblock stylesheets %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock stylesheets %}
 
-    {% block javascripts %}
-        {{ parent() }}
-        <script>
-            $('.row-idea').click(function () {
-                window.location.href = $(this).data('href');
-            });
-        </script>
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('.idea-title').click(function () {
+            window.location.href = $(this).data('href');
+        });
+    </script>
 
-    {% endblock javascripts %}
+{% endblock javascripts %}
